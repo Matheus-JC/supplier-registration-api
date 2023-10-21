@@ -1,1 +1,1 @@
-# Supplier Registrantion - 3 Layers Project
+# Supplier Registration - 3 Layer Project

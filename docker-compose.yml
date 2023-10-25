@@ -1,0 +1,11 @@
+services:
+  relational-db:
+    image: sqlserver_supreg
+    container_name: sqlserver_supreg
+    build:
+      context: ./
+      dockerfile: ./docker/sqlserver/Dockerfile
+    ports:
+      - 1433:1433
+    volumes:
+      - ./docker/sqlserver/data:/var/opt/mssql/data

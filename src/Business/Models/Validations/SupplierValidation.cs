@@ -13,19 +13,19 @@ public class SupplierValidation : AbstractValidator<Supplier>
 
         When(s => s.SupplierType == SupplierType.PhysicalPerson, () =>
         {
-            RuleFor(f => f.Document.Length).Equal(CpfValidator.CpfLength)
+            RuleFor(s => s.Document.Length).Equal(CpfValidator.CpfLength)
                 .WithMessage("The field must have {ComparisonValue} characteres and was provided {PropertyValue}");
 
-            RuleFor(f => CpfValidator.Validate(f.Document)).Equal(true)
+            RuleFor(s => CpfValidator.Validate(s.Document)).Equal(true)
                 .WithMessage("The document provided is invalid");
         });
 
         When(s => s.SupplierType == SupplierType.LegalPerson, () =>
         {
-            RuleFor(f => f.Document.Length).Equal(CnpjValidator.CnpjLength)
+            RuleFor(s => s.Document.Length).Equal(CnpjValidator.CnpjLength)
                 .WithMessage("The field must have {ComparisonValue} characteres and was provided {PropertyValue}");
 
-            RuleFor(f => CnpjValidator.Validate(f.Document)).Equal(true)
+            RuleFor(s => CnpjValidator.Validate(s.Document)).Equal(true)
                 .WithMessage("The document provided is invalid");
         });
     }

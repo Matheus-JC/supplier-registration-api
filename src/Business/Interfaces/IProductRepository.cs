@@ -6,5 +6,5 @@ public interface IProductRepository : IRepository<Product>
 {
     Task<IEnumerable<Product>> GetProductsBySupplier(Guid supplierId);
     Task<IEnumerable<Product>> GetProductsWithSuppliers();
-    Task<Product> GetProducWithSupplier(Guid id);
+    Task<Product?> GetProducWithSupplier(Guid id);
 }

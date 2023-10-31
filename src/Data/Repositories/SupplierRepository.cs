@@ -3,7 +3,7 @@ using SupplierRegServer.Business.Interfaces;
 using SupplierRegServer.Business.Models;
 using SupplierRegServer.Data.Context;
 
-namespace Data.Repositories;
+namespace SupplierRegServer.Data.Repositories;
 
 public class SupplierRepository : Repository<Supplier>, ISupplierRepository
 {
@@ -33,7 +33,7 @@ public class SupplierRepository : Repository<Supplier>, ISupplierRepository
     public async Task<Address?> GetAddressBySupplier(Guid supplierId)
     {
         return await _appContext.Address.AsNoTracking()
-            .FirstOrDefaultAsync(a => EF.Property<Guid>(a, "SupplierId") == supplierId);
+            .FirstOrDefaultAsync(a => a.SupplierId == supplierId);
     }
 
     public async Task DeleteSupplierAddress(Address address)

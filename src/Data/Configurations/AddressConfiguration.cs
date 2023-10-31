@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SupplierRegServer.Business.Models;
 
-namespace Data.Configurations;
+namespace SupplierRegServer.Data.Configurations;
 
 public class AddressConfiguration : IEntityTypeConfiguration<Address>
 {
@@ -41,6 +41,6 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         builder.Property(s => s.Complement)
             .HasColumnType("varchar(250)");
 
-        builder.ToTable("Addresses");
+        builder.ToTable(nameof(Address));
     }
 }

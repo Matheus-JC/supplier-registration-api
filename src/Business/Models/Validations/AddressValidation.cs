@@ -33,5 +33,8 @@ public class AddressValidation : AbstractValidator<Address>
         RuleFor(a => a.Country)
             .NotEmpty().WithMessage("The field {PropertyName} needs to be informed")
             .Length(2, 50).WithMessage("The field {PropertyName} must be between {MinLength} and {MaxLength} characters");
+
+        RuleFor(a => a.Complement)
+            .Length(2, 250).WithMessage("The field {PropertyName} must be between {MinLength} and {MaxLength} characters");
     }
 }

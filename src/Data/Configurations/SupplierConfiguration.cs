@@ -24,6 +24,6 @@ public class SupplierConfiguration : IEntityTypeConfiguration<Supplier>
         builder.HasMany(s => s.Products)
             .WithOne(p => p.Supplier);
 
-        builder.ToTable("Suppliers");
+        builder.ToTable(nameof(Supplier));
     }
 }

@@ -3,7 +3,7 @@ using SupplierRegServer.Business.Interfaces;
 using SupplierRegServer.Business.Models;
 using SupplierRegServer.Data.Context;
 
-namespace Data.Repositories;
+namespace SupplierRegServer.Data.Repositories;
 
 public class ProductRepository : Repository<Product>, IProductRepository
 {
@@ -30,6 +30,6 @@ public class ProductRepository : Repository<Product>, IProductRepository
 
     public async Task<IEnumerable<Product>> GetProductsBySupplier(Guid supplierId)
     {
-        return await Search(p => EF.Property<Guid>(p, "SupplierId") == supplierId);
+        return await Search(p => p.SupplierId == supplierId);
     }
 }

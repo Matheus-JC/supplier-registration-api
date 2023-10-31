@@ -10,6 +10,10 @@ public class SupplierValidation : AbstractValidator<Supplier>
         RuleFor(s => s.Name)
             .NotEmpty().WithMessage("The field {PropertyName} needs to be informed")
             .Length(2, 200).WithMessage("The field {PropertyName} must be between {MinLength} and {MaxLength} characters");
+        
+        RuleFor(s => s.SupplierType)
+            .IsInEnum()
+            .WithMessage("The {PropertyName} must be 1 (Physical Person) or 2 (Legal Person)");
 
         When(s => s.SupplierType == SupplierType.PhysicalPerson, () =>
         {

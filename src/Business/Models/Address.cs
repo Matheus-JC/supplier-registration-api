@@ -10,6 +10,7 @@ public class Address : Entity
     public required string State { get; set; }
     public required string Country { get; set; }
     public string? Complement { get; set; }
-    public required Supplier Supplier { get; set; }
 
+    public Guid SupplierId { get; set; }
+    public required Supplier Supplier { get; set; }
 }

@@ -22,6 +22,6 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
            .HasColumnType("decimal(10,2)")
            .IsRequired();
 
-        builder.ToTable("Products");
+        builder.ToTable(nameof(Product));
     }
 }

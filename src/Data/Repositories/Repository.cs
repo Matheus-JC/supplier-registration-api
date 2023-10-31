@@ -4,7 +4,7 @@ using SupplierRegServer.Business.Interfaces;
 using SupplierRegServer.Business.Models;
 using SupplierRegServer.Data.Context;
 
-namespace Data.Repositories;
+namespace SupplierRegServer.Data.Repositories;
 
 public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
 {

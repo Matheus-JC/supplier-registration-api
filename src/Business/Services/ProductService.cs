@@ -17,6 +17,14 @@ public class ProductService : BaseService, IProductService
     {
         if (!ExecuteValidation(new ProductValidation(), product)) return;
 
+        var productExists = await _productRepository.GetById(product.Id);
+
+        if (productExists != null)
+        {
+            Notify("There is already a product with the specified ID");
+            return;
+        }
+
         await _productRepository.Create(product);
     }
 

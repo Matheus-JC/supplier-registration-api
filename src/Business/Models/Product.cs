@@ -8,5 +8,6 @@ public class Product : Entity
     public DateTime CreationDate { get; set; }
     public bool Active { get; set; }
 
+    public Guid SupplierId { get; set; }
     public required Supplier Supplier { get; set; }
 }

@@ -12,7 +12,7 @@ using SupplierRegServer.Data.Context;
 namespace SupplierRegServer.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231025011326_Initial")]
+    [Migration("20231031154719_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -70,7 +70,7 @@ namespace SupplierRegServer.Data.Migrations
                     b.HasIndex("SupplierId")
                         .IsUnique();
 
-                    b.ToTable("Addresses", (string)null);
+                    b.ToTable("Address", (string)null);
                 });
 
             modelBuilder.Entity("SupplierRegServer.Business.Models.Product", b =>
@@ -103,7 +103,7 @@ namespace SupplierRegServer.Data.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("SupplierRegServer.Business.Models.Supplier", b =>
@@ -128,7 +128,7 @@ namespace SupplierRegServer.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Suppliers", (string)null);
+                    b.ToTable("Supplier", (string)null);
                 });
 
             modelBuilder.Entity("SupplierRegServer.Business.Models.Address", b =>

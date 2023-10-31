@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,6 +20,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Data\SupplierRegServer.Data.csproj" />
     <ProjectReference Include="..\Business\SupplierRegServer.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configurations/" />
   </ItemGroup>
 
 </Project>

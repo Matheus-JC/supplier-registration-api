@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SupplierRegServer.Business.Models;
+using SupplierRegServer.Data.Identity;
 
 namespace SupplierRegServer.Data.Context;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
@@ -28,6 +31,14 @@ public class ApplicationDbContext : DbContext
             relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<IdentityUser>().ToTable("User", "security").HasData(InitialData.GetUsers());
+        modelBuilder.Entity<IdentityRole>().ToTable("Role", "security").HasData(InitialData.GetRoles());
+        modelBuilder.Entity<IdentityUserRole<string>>().ToTable("UserRoles", "security").HasData(InitialData.GetUsersRoles());
+        modelBuilder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims", "security").HasData(InitialData.GetUserTestClaims());
+        modelBuilder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins", "security");
+        modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims", "security");
+        modelBuilder.Entity<IdentityUserToken<string>>().ToTable("UserTokens", "security");
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

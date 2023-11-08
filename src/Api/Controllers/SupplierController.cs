@@ -1,12 +1,15 @@
 using System.Net;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SupplierRegServer.Api.DTOs;
+using SupplierRegServer.Api.Extensions;
 using SupplierRegServer.Business.Interfaces;
 using SupplierRegServer.Business.Models;
 
 namespace SupplierRegServer.Api.Controllers;
 
+[Authorize]
 [Route("api/suppliers")]
 public class SupplierController : MainController
 {
@@ -22,6 +25,7 @@ public class SupplierController : MainController
         _mapper = mapper;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IEnumerable<SupplierDTO>> GetAll()
     {
@@ -40,6 +44,7 @@ public class SupplierController : MainController
         return supplierDto;
     }
 
+    [ClaimsAuthorize("Supplier", "Create")]
     [HttpPost]
     public async Task<ActionResult<SupplierDTO>> Create(SupplierDTO supplierDto)
     {
@@ -50,6 +55,7 @@ public class SupplierController : MainController
         return HandleResponse(HttpStatusCode.Created, supplierDto);
     }
 
+    [ClaimsAuthorize("Supplier", "Update")]
     [HttpPut("{id:guid}")]
     public async Task<ActionResult> Update(Guid id, SupplierDTO supplierDto)
     {
@@ -67,6 +73,7 @@ public class SupplierController : MainController
     }
 
 
+    [ClaimsAuthorize("Supplier", "Delete")]
     [HttpDelete("{id:guid}")]
     public async Task<ActionResult<SupplierDTO>> Delete(Guid id)
     {

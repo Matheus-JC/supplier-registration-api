@@ -11,9 +11,10 @@ using SupplierRegServer.Api.DTOs;
 using SupplierRegServer.Api.Extensions;
 using SupplierRegServer.Business.Interfaces;
 
-namespace SupplierRegServer.Api.Controllers;
+namespace SupplierRegServer.Api.Controllers.V1;
 
-[Route("api/account")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/account")]
 public class AuthController : MainController
 {
     private readonly SignInManager<IdentityUser> _signInManager;

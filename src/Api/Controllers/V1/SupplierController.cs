@@ -7,10 +7,11 @@ using SupplierRegServer.Api.Extensions;
 using SupplierRegServer.Business.Interfaces;
 using SupplierRegServer.Business.Models;
 
-namespace SupplierRegServer.Api.Controllers;
+namespace SupplierRegServer.Api.Controllers.V1;
 
 [Authorize]
-[Route("api/suppliers")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/suppliers")]
 public class SupplierController : MainController
 {
     private readonly ISupplierRepository _supplierRepository;

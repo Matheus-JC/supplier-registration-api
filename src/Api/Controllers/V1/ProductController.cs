@@ -5,9 +5,10 @@ using SupplierRegServer.Api.DTOs;
 using SupplierRegServer.Business.Interfaces;
 using SupplierRegServer.Business.Models;
 
-namespace SupplierRegServer.Api.Controllers;
+namespace SupplierRegServer.Api.Controllers.V1;
 
-[Route("api/products")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/products")]
 public class ProductController : MainController
 {
     private readonly IProductRepository _productRepository;

@@ -20,13 +20,15 @@ public class AuthController : MainController
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly UserManager<IdentityUser> _userManager;
     private readonly JwtSettings _jwtSettings;
+    private readonly ILogger _logger;
 
     public AuthController(INotifier notifier, SignInManager<IdentityUser> signInManager,
-        UserManager<IdentityUser> userManager, IOptions<JwtSettings> jwtSettings) : base(notifier)
+        UserManager<IdentityUser> userManager, IOptions<JwtSettings> jwtSettings, ILogger<AuthController> logger) : base(notifier)
     {
         _signInManager = signInManager;
         _userManager = userManager;
         _jwtSettings = jwtSettings.Value;
+        _logger = logger;
     }
 
     [HttpPost("register")]

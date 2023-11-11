@@ -33,11 +33,7 @@ public static class ApiConfig
 
     public static IApplicationBuilder UseApiConfig(this IApplicationBuilder app, IWebHostEnvironment env)
     {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-        else
+        if (!env.IsDevelopment())
         {
             app.UseHsts();
         }

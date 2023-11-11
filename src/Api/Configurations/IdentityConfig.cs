@@ -9,7 +9,7 @@ namespace SupplierRegServer.Api.Configurations;
 
 public static class IdentityConfig
 {
-    public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddIdentityConfig(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddIdentity<IdentityUser, IdentityRole>()
             .AddRoles<IdentityRole>()
